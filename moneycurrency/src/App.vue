@@ -1,26 +1,58 @@
-<template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
-</template>
+<script setup>
+import { RouterLink, RouterView } from "vue-router";
+import Dashbord from "@/components/Dashbord.vue";
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+import { useRouter } from 'vue-router'
+import { onMounted, reactive, watch } from 'vue'
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+const router = useRouter()
+
+const state = reactive({
+    isLogged: false,
+})
+
+const defaultRoute = () => {
+    const token = localStorage.getItem('token')
+    console.log("token app",token)
+    if (token !== null) {
+        state.isLogged = true
+    } else {
+        router.push('/')
+    }
 }
+
+
+onMounted(() => {
+    defaultRoute();
+})
+
+watch(() => state, (isLogged, oldIsLogged) => {
+    console.log(`isLogged is: ${isLogged}`)
+  }
+)
+
 </script>
 
-<style>
+<template>
+  <div> 
+      <div v-if="state.isLogged">
+           <Dashbord/>
+      </div>
+      <div v-else>
+           <RouterView /> 
+      </div> 
+  </div> 
+</template>
+
+<style >
+@import "@/assets/base.css";
+
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0;
+  font-weight: normal;
 }
 </style>
+

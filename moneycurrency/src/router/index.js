@@ -2,7 +2,12 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import LoginView from "../views/LoginView.vue";
 import DashbordView from "../views/DashbordView.vue";
-import TableListPairsView from "../views/TableListPairsView.vue";
+import TableListPairsView from "../views/TableListPairsView.vue"; 
+import TableListCurrencyView from "../views/TableListCurrencyView.vue"; 
+import FormCreateCurrencyView from "../views/FormCreateCurrencyView.vue"; 
+import FormUpdateCurrency from "../views/FormUpdateCurrency.vue"; 
+import FormUpadatePair from "../views/FormUpadatePair.vue";
+import FormCreatePairView from "../views/FormCreatePairView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -11,7 +16,7 @@ const router = createRouter({
     {
       path: "/",
       name: "login",
-      component: () => import("../views/LoginView.vue"),
+      component: LoginView,
       beforeEnter(){
         if (localStorage.getItem("token")) {
             this.$route.push("/dashbord") ;
@@ -24,13 +29,14 @@ const router = createRouter({
       path: "/dashbord",
       name: "dashbord",
       
-      component: () => import("../views/DashbordView.vue"),
+      component: DashbordView,
       
+   
     },
     {
       path: "/dashbord-listepair",
       name: "listepair",
-      component:  () => import("../views/TableListPairsView.vue"),
+      component:  TableListPairsView,
       beforeEnter(){
         if (localStorage.getItem("token") == null) {
             return {path:"/"};
@@ -40,7 +46,7 @@ const router = createRouter({
     {
       path: "/dashbord-liste-currency",
       name: "listecurrency",
-      component:  () => import("../views/TableListCurrencyView.vue"),
+      component:  TableListCurrencyView,
       beforeEnter(){
         if (localStorage.getItem("token") == null) {
             return {path:"/"};
@@ -50,7 +56,7 @@ const router = createRouter({
     {
       path: "/dashbord-createCurrencie",
       name: "createCurrency",
-      component:  () => import("../views/FormCreateCurrencyView.vue"),
+      component:  FormCreateCurrencyView,
       beforeEnter(){
         if (localStorage.getItem("token") == null) {
             return {path:"/"};
@@ -61,7 +67,7 @@ const router = createRouter({
     {
       path: "/dashbord-update-currencie/:id",
       name: "updateCurrency",
-      component:  () => import("../views/FormUpdateCurrency.vue"),
+      component:  FormUpdateCurrency,
       beforeEnter(){
         if (localStorage.getItem("token") == null) {
             return {path:"/"};
@@ -71,7 +77,7 @@ const router = createRouter({
     {
       path: "/updatepair/:id",
       name: "updatePair",
-      component:  () => import("../views/FormUpadatePair.vue"),
+      component:  FormUpadatePair,
       beforeEnter(){
         if (localStorage.getItem("token") == null) {
             return {path:"/"};
@@ -81,7 +87,7 @@ const router = createRouter({
     {
       path: "/createpair",
       name: "createPair",
-      component:  () => import("../views/FormCreatePairView.vue"),
+      component:  FormCreatePairView,
       beforeEnter(){
         if (localStorage.getItem("token") == null) {
             return {path:"/"};

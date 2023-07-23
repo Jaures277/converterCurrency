@@ -2,7 +2,7 @@
   <section class="login-content-form">
     <div class="form-bg">
       <div class="conteneur">
-        <div class="row ">
+        <div class="row">
           <div class="col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6 w-100">
             <div class="form-container">
               <h3 class="title">Currency converter API</h3>
@@ -189,4 +189,4 @@ export default {
   letter-spacing: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) inset;
 }
-</style>
+</style>>
