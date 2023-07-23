@@ -148,7 +148,7 @@ class PairController extends Controller
 
         $info = Pair::where('currency_id_from',$currency_from)->where('currency_id_to',$currency_to)->first();
 
-        /*if(!isset($info) || $info == Null){
+        if(!isset($info) || $info == Null){
             return response()->json([
                 "status" => 0,
                 "message" => "pair introuvable"
@@ -167,7 +167,7 @@ class PairController extends Controller
             "resultat1" => $resultPaireInitial,
             "resultat2" => $resultPaireFinal,
             "data" => $info
-        ]);*/
+        ]);
     }
 
 }
