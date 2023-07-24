@@ -34,7 +34,7 @@ class UserController extends Controller
     /**
      * Login
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Response
      */
     public function login(Request $request)
     {
@@ -43,7 +43,7 @@ class UserController extends Controller
             'password' => 'required'
         ]);
         //verifier si l'utilisateur existe
-        $user = User::where('email', '=', $request->email)->first();
+        $user = User::where('email', $request->email)->first();
 
         if($user){
             //si l'utilisateur existe on verifie le mot de passe saisie et celle qui est dans la base de donnée
