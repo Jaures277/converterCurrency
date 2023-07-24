@@ -20,7 +20,6 @@ const router = createRouter({
       beforeEnter(){
         if (localStorage.getItem("token")) {
             this.$route.push("/dashbord") ;
-            
         }
       }
     },
@@ -28,10 +27,12 @@ const router = createRouter({
     {
       path: "/dashbord",
       name: "dashbord",
-      
       component: DashbordView,
-      
-   
+      beforeEnter(){
+        if (localStorage.getItem("token")) {
+          this.$route.push("/dashbord-listepair") ;
+        }
+      }
     },
     {
       path: "/dashbord-listepair",
@@ -94,7 +95,6 @@ const router = createRouter({
         }
       }
     },
-    
 
   ],
 });

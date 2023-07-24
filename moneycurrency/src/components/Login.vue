@@ -51,24 +51,27 @@ export default {
         email: "",
         password: "",
       },
+      jsonData: null, // Pour stocker la valeur JSON récupérée
       errors: {},
     };
   },
   methods: {
      login(){
-                axios.post('http://127.0.0.1:8000/api/login', this.infosData).then((response) => {
-                   
-                    localStorage.setItem('token', response.data.access_token)
-                    console.log(response.data)
-                     
-                      window.location.href="/dashbord-listepairs"
-                   
-                }).catch((errors) => {
-                    this.errors = errors.response.data.errors
-                })
-            },
-     
-    
+        axios.post('http://127.0.0.1:8000/api/login', this.infosData).then((response) => {
+          if(response.data.status == 0){
+            let jsonData;
+            jsonData = response.data.message;
+            console.log(response.data)
+            window.location.href="/"
+          }else {
+            localStorage.setItem('token', response.data.access_token)
+            window.location.href="/dashbord"
+          }
+
+        }).catch((errors) => {
+            this.errors = errors.response.data.errors
+        })
+      },
   },
 };
 </script>
@@ -91,10 +94,10 @@ export default {
 .form-container {
   background: linear-gradient(
     150deg,
-    #1b394d 33%,
-    #2d9da7 34%,
-    #2d9da7 66%,
-    #ec5f20 67%
+    #250360 33%,
+    #bbd8f5 34%,
+    #a7abab 66%,
+    #060d93 67%
   );
   font-family: "Raleway", sans-serif;
   text-align: center;
@@ -151,7 +154,7 @@ export default {
 }
 .form-horizontal .form-control:focus {
   box-shadow: none;
-  border-bottom-color: #ec5f20;
+  border-bottom-color: #3a67c5;
 }
 .form-horizontal .form-control::placeholder {
   color: #000;
@@ -174,7 +177,7 @@ export default {
 }
 .form-horizontal .signin {
   color: #fff;
-  background-color: #ec5f20;
+  background-color: #07249b;
   font-size: 17px;
   text-transform: capitalize;
   letter-spacing: 2px;

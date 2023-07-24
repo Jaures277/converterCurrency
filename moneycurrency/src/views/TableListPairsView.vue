@@ -34,13 +34,13 @@
             <td>
               <router-link
                 :to="`/updatepair/${pair.id}`"
-                class="btn btn-sm round btn-outline-success"
+                class="btn btn-dark"
               >
                 Modifier
               </router-link>
               <button
                 type="button"
-                class="btn btn-sm round btn-outline-danger"
+                class="btn btn-danger"
                 @click.prevent="deletePair(pair.id)"
               >
                 Supprimer

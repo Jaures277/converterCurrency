@@ -9,7 +9,6 @@
       </div>
 
       <div class="sidebar-menu">
-
         <nav>
            
           <ul>
@@ -19,9 +18,9 @@
               </RouterLink>
             </li>
             <li :class="{ active: selected === 'listecurrency' }">
-              <RouterLink  to="/dashbord-liste-currency"
-                > <span></span><span>Devise</span></RouterLink
-              >
+              <RouterLink  to="/dashbord-liste-currency">
+                <span></span><span>Devise</span>
+              </RouterLink>
             </li>
             <!-- <li>
               <a href="#" class="active">Accueil</a>
@@ -29,6 +28,7 @@
           </ul>
         </nav>
       </div>
+
     </div>
     <div class="content">
       <header>
@@ -47,6 +47,7 @@
           </button>
         </div>
       </header>
+
       <main>
         <div class="col-lg-12 col-md-12 col-sm-12 m-2 p-2">
           <div class="card">
@@ -56,11 +57,10 @@
           </div>
         </div>
       </main>
+
     </div>
   </section>
 </template>
-
-
 
 
 <script>
